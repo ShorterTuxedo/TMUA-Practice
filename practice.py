@@ -287,7 +287,7 @@ while True:
             
             """)
             
-            option = input("WHICH OPION? (ENTER \"Q\" TO QUIT):")
+            option = input("WHICH OPTION? (ENTER \"Q\" TO QUIT):")
             if option.upper() == "Q":
                 optionInvalid = False
                 break
