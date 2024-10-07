@@ -48,6 +48,8 @@ def get_time_left(end_time):
     return (secs_left // 60, secs_left % 60)
 
 def answer_question(paper_id, question_num, image_bank, my_answers, end_time):
+    if time.time() > end_time:
+        return False
     clearScreen()
     question_num1=question_num+1
     printTitle(f"ANSWERING PAPER {paper_id} QUESTION {question_num1}")
@@ -105,6 +107,8 @@ def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
         time_left = get_time_left(end_time)
         print("YOU HAVE", time_left[0], "MINUTES AND", time_left[1], "SECONDS LEFT")
         print();print()    
+        if time.time() > end_time:
+            time_up = True
         for question_num in range(num_of_questions):
             print( ("QUESTION " + str((question_num+1))+":"), my_answers[question_num])
         print()
@@ -121,6 +125,9 @@ def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
                     isSubmitFinal = int(isSubmitFinal)
                     if isSubmitFinal >= 1 and isSubmitFinal <= 20:
                         isSubmitFinal-=1
+                        if time.time() > end_time:
+                            time_up = True
+                            continue
                         answer_question(paper_id, isSubmitFinal, image_bank, my_answers, end_time)
                         isSubmitFinal = None
                         break
