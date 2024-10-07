@@ -1,5 +1,7 @@
 # TMUA-Practice
-A tool to help you practice for your TMUA.
+A tool to help you practice for your TMUA, or any multiple-choice quiz. <br />
+This tool was designed for the TMUA, but you can modify it to fit any multiple-choice exam, such as HKOI heat event. <br />
+All you need is taking screenshots of questions, and fill in the correct answers. It'll handle the rest.
 
 ## **Features**
 ![image](https://github.com/user-attachments/assets/010ce6ab-0d04-40ae-a26f-356abc4a39fb)
