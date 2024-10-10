@@ -12,6 +12,8 @@ WILDCARD_TMUA_PAPER2_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1.3,"5":2.1,"6":2
 WILDCARD_TMUA_SET_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1.2,"7":1.6,"8":2.1,"9":2.5,"10":2.9,"11":3.2,"12":3.6,"13":3.9,"14":4.2,"15":4.5,"16":4.8,"17":5.1,"18":5.4,"19":5.7,"20":5.9,"21":6.2,"22":6.5,"23":6.6,"24":6.7,"25":6.8,"26":6.9,"27":7,"28":7.1,"29":7.2,"30":7.4,"31":7.5,"32":7.6,"33":7.8,"34":8,"35":8.1,"36":8.4,"37":8.6,"38":9,"39":9,"40":9}
 # These are the PRE-SET TMUA WILDCARD THRESHOLDS.
 
+showQuestionsAfterFinished = True
+
 modes = {
     "YEAR": "ALLOWS YOU TO PRACTISE A CERTAIN YEAR OF TMUA.",
     "PAPER": "ALLOWS YOU TO PRACTISE A CERTAIN PAPER OF TMUA.",
@@ -85,7 +87,8 @@ def mark_paper(my_answers, correct_answers):
 def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
     global question_bank
     global num_of_questions
-    
+    global showQuestionsAfterFinished
+
     end_time = time.time() + time_limit
     my_answers = ["INCOMPLETE"] * num_of_questions
 
@@ -148,6 +151,8 @@ def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
         aisc = "CORRECT" if my_correct_answer_q=="c" else "INCORRECT"
         qn_x2=qn_x-1
         print(f"QUESTION {qn_x}: {aisc}, CORRECT ANSWER: {correct_answers[qn_x2]}, YOU ANSWERED: {my_answers[qn_x2]}")
+        if showQuestionsAfterFinished:
+            print(f"QUESTION IMAGE PATH: {image_bank[qn_x2]}")
         qn_x+=1
     print("YOUR SCORE:", my_score[0],"/",my_score[1])
     my_grade = grade_thresholds[str(my_score[0])]

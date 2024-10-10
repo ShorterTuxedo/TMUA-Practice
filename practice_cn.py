@@ -12,6 +12,8 @@ WILDCARD_TMUA_PAPER2_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1.3,"5":2.1,"6":2
 WILDCARD_TMUA_SET_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1.2,"7":1.6,"8":2.1,"9":2.5,"10":2.9,"11":3.2,"12":3.6,"13":3.9,"14":4.2,"15":4.5,"16":4.8,"17":5.1,"18":5.4,"19":5.7,"20":5.9,"21":6.2,"22":6.5,"23":6.6,"24":6.7,"25":6.8,"26":6.9,"27":7,"28":7.1,"29":7.2,"30":7.4,"31":7.5,"32":7.6,"33":7.8,"34":8,"35":8.1,"36":8.4,"37":8.6,"38":9,"39":9,"40":9}
 # These are the PRE-SET TMUA WILDCARD THRESHOLDS.
 
+showQuestionsAfterFinished = True
+
 modes = {
     "YEAR": "練習自選的TMUA試卷套（自選年份）。試卷套由一份 第一卷 和 一份 第二卷試卷組成。",
     "PAPER": "練習自選的TMUA試卷。",
@@ -148,6 +150,8 @@ def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
         aisc = "回答正確" if my_correct_answer_q=="c" else "回答錯誤"
         qn_x2=qn_x-1
         print(f"第 {qn_x} 題: {aisc}, 正確答案: {correct_answers[qn_x2]}, 你的回答: {my_answers[qn_x2]}")
+        if showQuestionsAfterFinished:
+            print(f"題目圖片路徑： {image_bank[qn_x2]}")
         qn_x+=1
     print("你的分數:", my_score[0],"/",my_score[1])
     my_grade = grade_thresholds[str(my_score[0])]
