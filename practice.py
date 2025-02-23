@@ -9,7 +9,7 @@ time_limit = 75 * 60
 # It is said that the TMUA will be running as WILDCARD mode from now on.
 WILDCARD_TMUA_PAPER1_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1.9,"5":2.7,"6":3.4,"7":4,"8":4.6,"9":5.2,"10":5.8,"11":6.3,"12":6.6,"13":6.9,"14":7.1,"15":7.3,"16":7.6,"17":7.9,"18":8.3,"19":9,"20":9}
 WILDCARD_TMUA_PAPER2_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1.3,"5":2.1,"6":2.8,"7":3.4,"8":4,"9":4.6,"10":5.2,"11":5.8,"12":6.4,"13":6.7,"14":6.9,"15":7.2,"16":7.4,"17":7.8,"18":8.2,"19":8.9,"20":9}
-WILDCARD_TMUA_SET_THRESHOLDS = {"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1.2,"7":1.6,"8":2.1,"9":2.5,"10":2.9,"11":3.2,"12":3.6,"13":3.9,"14":4.2,"15":4.5,"16":4.8,"17":5.1,"18":5.4,"19":5.7,"20":5.9,"21":6.2,"22":6.5,"23":6.6,"24":6.7,"25":6.8,"26":6.9,"27":7,"28":7.1,"29":7.2,"30":7.4,"31":7.5,"32":7.6,"33":7.8,"34":8,"35":8.1,"36":8.4,"37":8.6,"38":9,"39":9,"40":9}
+WILDCARD_TMUA_SET_THRESHOLDS = # {"0":1,"1":1,"2":1,"3":1,"4":1,"5":1,"6":1.2,"7":1.6,"8":2.1,"9":2.5,"10":2.9,"11":3.2,"12":3.6,"13":3.9,"14":4.2,"15":4.5,"16":4.8,"17":5.1,"18":5.4,"19":5.7,"20":5.9,"21":6.2,"22":6.5,"23":6.6,"24":6.7,"25":6.8,"26":6.9,"27":7,"28":7.1,"29":7.2,"30":7.4,"31":7.5,"32":7.6,"33":7.8,"34":8,"35":8.1,"36":8.4,"37":8.6,"38":9,"39":9,"40":9}
 # These are the PRE-SET TMUA WILDCARD THRESHOLDS.
 
 showQuestionsAfterFinished = True
@@ -156,7 +156,8 @@ def execute_paper(paper_id, image_bank, correct_answers, grade_thresholds):
         qn_x+=1
     print("YOUR SCORE:", my_score[0],"/",my_score[1])
     my_grade = grade_thresholds[str(my_score[0])]
-    print("YOUR GRADE:","{:.1f}".format(my_grade))
+    # print("YOUR GRADE:","{:.1f}".format(my_grade))
+    print("\n\nNOTE THAT DUE TO A NEW SCORING SYSTEM IN PLACE, OLD COMPONENT GRADES ARE INACCURATE. COMPONENT SCORES ARE NO LONGER PROVIDED.")
     pause()
     return {"component":paper_id, "score":list(my_score),"grade":my_grade}
 
@@ -220,12 +221,13 @@ while True:
             clearScreen()
             printTitle(f"FINAL SCORE ON TMUA (YEAR {year_id})")
 
-            year_scores = question_bank["years"][year_id]["grades"]
+            year_scores = WILDCARD_TMUA_SET_THRESHOLDS # question_bank["years"][year_id]["grades"]
             my_total_score = paper_1["score"][0] + paper_2["score"][0]
             max_total_score = paper_1["score"][1] + paper_2["score"][1]
             print("YOUR SCORE:", my_total_score,"/",max_total_score)
             my_grade = year_scores[str(my_total_score)]
             print("YOUR GRADE:","{:.1f}".format(my_grade))
+            print("\n\nNOTE THAT DUE TO A NEW SCORING SYSTEM ENACTED BY UAT UK, OLD BOUNDARY INFORMATION IS NO LONGER ACCURATE.")
             pause()
             year_id = None
     elif mode == "PAPER":
