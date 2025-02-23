@@ -3,6 +3,11 @@ A tool to help you practice for your TMUA, or any multiple-choice quiz. <br />
 This tool was designed for the TMUA, but you can modify it to fit any multiple-choice exam, such as HKOI heat event. <br />
 All you need is taking screenshots of questions, and fill in the correct answers. It'll handle the rest.
 
+**UPDATE: UAT UK has updated their scoring system in 2024/25. It is now such that 6.5 in 2023/24 equates to 5.0 in 2024/25. Corresponding rough grade boundaries are below:**
+
+![image](https://github.com/user-attachments/assets/7752ccc9-1c58-4381-9560-6718c4f71318)
+
+
 ## **Features**
 ![image](https://github.com/user-attachments/assets/010ce6ab-0d04-40ae-a26f-356abc4a39fb)
 
